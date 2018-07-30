@@ -1,69 +1,73 @@
-<style media="screen">
-body{
-  background-color: orange;
-}
-#left{
-  float: right;
-}
-  #textbox{
-    margin-top: 95px;
-  }
-  #heading{
-    text-align: center;
-  }
-</style>
-<div class="container">
-  <div class="row" id="heading">
-    <div class="col-2"></div>
-    <div class="col-8">
-      <h1>
-        Burger Eater!
-      </h1>
-     
-      <h3>
-        Program that utilizes Express, Handle-Bars, mySql, and jQuery.
-      </h3>
-    </div>
-    <div class="col-2"></div>
-  </div>
-  <div class="row">
-    <div class="col-6">
-      <ul id="left">
-      {{#each burgers}}
-        {{#unless devoured}}
-          <li>
-            {{burger_name}}
-          </li>
-          <button>
-            Devour it
-          </button>
-          <br />
-          <br />
-        {{/unless}}
-      {{/each}}
-    </ul>
-    </div>
-   
-    <div class="col-6"> <ul id="right">
-      {{#each burgers}}
-        {{#if devoured}}
-          <li>
-            {{burger_name}}
-          </li>
-        {{/if}}
-      {{/each}}
-    </ul></div>
-  </div>
-  <div class="row">
-     <div class="col-4">
+<div class="container" style="background-color:hotpink;">
+<div class="row">
+  <div class="col-2"></div>
+  <div class="col-8"><h1 style="text-align:center; font-family: 'Passion One', cursive;">Juicy Burger: Transferring data from the client, to server, to a MySQL database, and back to the client!</h1></div>
+<div class="col-2"></div>
+</div>
 
-     </div>
-     <div class="col-4"><div class="input-group input-group-lg">
-      <div class="input-group-prepend">
-       <button type="button" class="btn btn-danger" id="addBurger">Add Burger</button>
-      </div>
-     <input type="text" >
-       <div class="col-4"></div>
-    </div>
+  <div class="row">
+  <div class="col-4">
+    <h2 style="font-family: 'Concert One', cursive;
+">Burgers that are not devoured!</h2>
+
+<ul>
+  
+  {{#each burgers}}
+    {{#unless devoured}}
+      {{> burgers/burger-block devoured=true}}
+    {{/unless}}
+  {{/each}}
+
+</ul>
+<img src="/hungry" alt="" width="100%">
+  </div>
+
+<div class="col-4" style="margin-top:0px; text-align:center;">
+<div class="addBurger">
+<h2 class='burgerName' style="margin-bottom:2px; margin-right:8px; margin-left:8px; font-family: 'Concert One', cursive;">
+  Add a Burger
+  </h2>
+<div id="cheese" style="height:7px;  background-color:yellow; margin:-2px,0,-2px,0;"></div>
+<form class="create-form">
+
+  
+
+  <div class="form-group create-update-form" style="margin-bottom:-2px; margin-top:2px;  margin-right:8px; margin-left:8px; background-color:brown; color:wheat">
+    <label for="sleepy">Devoured?</label><br>
+    <input type="radio" name="devoured" value="1"> Devoured!<br>
+    <input type="radio" name="devoured" value="0"> Not Devoured <br>
+  </div>
+<div class="form-group burgerName" style="margin-bottom:3px;">
+    <label for="ba">Burger Name:</label>
+    <input type="text" id="ba" name="name"> 
+  </div>
+  <button type="submit">Add Burger</button>
+  </form>
+  </div>
+</div>
+<div class="col-4">
+  <h2 style="font-family: 'Concert One', cursive;
+">Burgers that are devoured!</h2>
+
+<ul style="list-style-type: none;">
+  {{#each burgers}}
+    {{#if devoured}}
+      {{> burgers/burger-block devoured=false}}
+    {{/if}}
+  {{/each}}
+</ul>
+<img src="/overeat" width="100%">
+
+</div>
+
+</div>
+<div class="row">
+  <div class="col-4"></div>
+  <div class="col-4">
+
+  </div>
+    <div class="col-4"></div>
+
+</div>
   </div>
 </div>
